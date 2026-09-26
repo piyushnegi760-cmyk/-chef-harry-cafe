@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Chef Harry Cafe | Tunwala, Dehradun</title>
+
+  <meta
+    name="description"
+    content="Chef Harry Cafe — Good Food, Great Vibes. Visit us in Tunwala, Nehrugram, Dehradun."
+  />
+
+  <meta name="theme-color" content="#0b0907" />
+
+  <style>
+    :root {
+      --bg: #0b0907;
+      --bg2: #12100d;
+      --card: rgba(255,255,255,0.055);
+      --gold: #e8b85c;
+      --gold2: #ffd98a;
+      --cream: #fff4df;
+      --muted: #b9afa0;
+      --line: rgba(255,255,255,0.10);
+      --green: #52d68a;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(232,184,92,.12), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(255,130,60,.08), transparent 30%),
+        var(--bg);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      z-index: -2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #080705;
+      display: grid;
+      place-items: center;
+      z-index: 9999;
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-inner {
+      text-align: center;
+    }
+
+    .loader-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,184,92,.5);
+      display: grid;
+      place-items: center;
+      margin: auto;
+      font-size: 38px;
+      box-shadow:
+        0 0 40px rgba(232,184,92,.18),
+        inset 0 0 30px rgba(232,184,92,.08);
+      animation: pulse 1.8s infinite;
+    }
+
+    .loader-text {
+      margin-top: 20px;
+      letter-spacing: 5px;
+      color: var(--gold2);
+      font-size: 12px;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: .35s ease;
+    }
+
+    header.scrolled {
+      background: rgba(8,7,5,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      width: min(1180px, 92%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f5cc77, #9b6726);
+      color: #171006;
+      font-size: 21px;
+      box-shadow: 0 10px 30px rgba(232,184,92,.2);
+    }
+
+    .brand-name {
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      font-size: 14px;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ddd5ca;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold2);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border: 1px solid rgba(232,184,92,.45);
+      border-radius: 999px;
+      color: var(--gold2) !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 130px 0 70px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(232,184,92,.09);
+      filter: blur(90px);
+      right: -220px;
+      top: 100px;
+      animation: glowMove 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowMove {
+      from {
+        transform: translateY(-20px);
+      }
+      to {
+        transform: translateY(50px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid var(--line);
+      color: var(--gold2);
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(15px);
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(82,214,138,.8);
+    }
+
+    h1 {
+      font-size: clamp(52px, 8vw, 105px);
+      line-height: .9;
+      letter-spacing: -5px;
+      max-width: 850px;
+    }
+
+    h1 span {
+      color: var(--gold2);
+      display: block;
+      text-shadow: 0 0 45px rgba(232,184,92,.12);
+    }
+
+    .hero-text {
+      margin-top: 28px;
+      max-width: 590px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 15px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f5d080, #b77828);
+      color: #181006;
+      box-shadow: 0 14px 35px rgba(232,184,92,.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(232,184,92,.28);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      color: white;
+      backdrop-filter: blur(15px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(232,184,92,.45);
+      color: var(--gold2);
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       3D ORBIT
+    ========================= */
+
+    .hero-art {
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .plate {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      left: 130px;
+      top: 130px;
+      background:
+        radial-gradient(circle at 50% 45%, #f7dfaa 0 8%, transparent 9%),
+        radial-gradient(circle, #241b10 0 47%, #dfb968 48% 52%, #292016 53% 100%);
+      box-shadow:
+        0 35px 80px rgba(0,0,0,.6),
+        0 0 80px rgba(232,184,92,.10);
+      animation: plateFloat 5s ease-in-out infinite;
+    }
+
+    .plate::after {
+      content: "🍽️";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 95px;
+      filter: drop-shadow(0 20px 25px rgba(0,0,0,.5));
+    }
+
+    .orbit {
+      position: absolute;
+      border: 1px solid rgba(232,184,92,.25);
+      border-radius: 50%;
+      inset: 45px;
+      animation: spin 16s linear infinite;
+    }
+
+    .orbit.two {
+      inset: 90px;
+      animation-duration: 11s;
+      animation-direction: reverse;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--gold2);
+      box-shadow: 0 0 25px rgba(232,184,92,.7);
+      top: -6px;
+      left: 50%;
+    }
+
+    .orbit.two .orbit-dot {
+      background: #fff0c4;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes plateFloat {
+      0%,100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(3deg);
+      }
+    }
+
+    .floating-food {
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      font-size: 30px;
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .food-1 {
+      top: 70px;
+      right: 35px;
+    }
+
+    .food-2 {
+      bottom: 80px;
+      left: 25px;
+      animation-delay: -2s;
+    }
+
+    .food-3 {
+      top: 250px;
+      right: -5px;
+      animation-delay: -3s;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(5deg);
+      }
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 55px;
+    }
+
+    .section-tag {
+      color: var(--gold2);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      margin-bottom: 13px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(35px, 5vw, 62px);
+      letter-spacing: -2.5px;
+      line-height: 1;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-top: 18px;
+    }
+
+    /* =========================
+       INFO STRIP
+    ========================= */
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .info-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.065),
+        rgba(255,255,255,.025)
+      );
+      border-radius: 25px;
+      backdrop-filter: blur(20px);
+      transition: .35s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(232,184,92,.35);
+    }
+
+    .info-icon {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .info-card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-visual {
+      min-height: 500px;
+      border-radius: 35px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 40% 30%, rgba(232,184,92,.25), transparent 30%),
+        linear-gradient(145deg, #2a1e12, #100d09 70%);
+      box-shadow: var(--shadow);
+    }
+
+    .about-visual::before {
+      content: "CHEF";
+      position: absolute;
+      font-size: 130px;
+      font-weight: 900;
+      letter-spacing: -8px;
+      color: rgba(255,255,255,.025);
+      left: -15px;
+      bottom: 10px;
+    }
+
+    .about-plate {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f5d99b 0 10%, #513a20 11% 45%, #d9b36b 46% 50%, #17110a 51%);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%) rotate(-10deg);
+      box-shadow: 0 35px 70px rgba(0,0,0,.6);
+    }
+
+    .about-plate::after {
+      content: "🍔";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 85px;
+    }
+
+    .about-badge {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(15px);
+      font-size: 12px;
+      color: var(--gold2);
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin-top: 25px;
+    }
+
+    .about-list li {
+      color: #ded5c8;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .check {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(232,184,92,.12);
+      color: var(--gold2);
+      border: 1px solid rgba(232,184,92,.25);
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .menu-tab {
+      padding: 11px 17px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      color: #d7cec2;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .menu-tab.active,
+    .menu-tab:hover {
+      background: var(--gold);
+      color: #181006;
+      border-color: var(--gold);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 17px;
+    }
+
+    .menu-card {
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      padding: 25px;
+      background: rgba(255,255,255,.035);
+      transition: .35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(232,184,92,.35);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-emoji {
+      font-size: 48px;
+      margin-bottom: 25px;
+    }
+
+    .menu-card h3 {
+      margin-bottom: 9px;
+    }
+
+    .menu-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    .demo-label {
+      margin-top: 18px;
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold2);
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr .8fr;
+      grid-auto-rows: 220px;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: 25px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(232,184,92,.28), transparent 30%),
+        linear-gradient(135deg, #332414, #100c08);
+      transition: .4s;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.015);
+      border-color: rgba(232,184,92,.4);
+    }
+
+    .gallery-item.big {
+      grid-row: span 2;
+    }
+
+    .gallery-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+    }
+
+    .gallery-content span {
+      color: var(--gold2);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .gallery-content h3 {
+      margin-top: 6px;
+      font-size: 20px;
+    }
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .location-card,
+    .map-card {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255,255,255,.035);
+      overflow: hidden;
+    }
+
+    .location-card {
+      padding: 35px;
+    }
+
+    .location-card h3 {
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .address {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .location-details {
+      display: grid;
+      gap: 17px;
+      margin: 30px 0;
+    }
+
+    .location-row {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .location-row-icon {
+      font-size: 21px;
+    }
+
+    .location-row strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .location-row span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .map-card {
+      min-height: 420px;
+      position: relative;
+      background:
+        linear-gradient(rgba(12,10,8,.25), rgba(12,10,8,.7)),
+        repeating-linear-gradient(
+          35deg,
+          #1b1813 0,
+          #1b1813 35px,
+          #211d17 36px,
+          #211d17 70px
+        );
+    }
+
+    .map-road {
+      position: absolute;
+      width: 130%;
+      height: 65px;
+      background: rgba(255,255,255,.055);
+      transform: rotate(-28deg);
+      top: 45%;
+      left: -10%;
+    }
+
+    .map-road.two {
+      transform: rotate(24deg);
+      top: 25%;
+      opacity: .65;
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: #191006;
+      font-size: 30px;
+      box-shadow: 0 0 0 15px rgba(232,184,92,.08), 0 0 70px rgba(232,184,92,.35);
+      animation: pinPulse 2s infinite;
+    }
+
+    @keyframes pinPulse {
+      50% {
+        box-shadow: 0 0 0 25px rgba(232,184,92,.03), 0 0 90px rgba(232,184,92,.4);
+      }
+    }
+
+    .map-label {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + 60px);
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.55);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      padding: 10px 15px;
+      border-radius: 999px;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 120px 0;
+    }
+
+    .cta-box {
+      border-radius: 40px;
+      border: 1px solid rgba(232,184,92,.25);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(232,184,92,.14), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255,120,50,.08), transparent 35%),
+        rgba(255,255,255,.035);
+      padding: 75px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,184,92,.12);
+      top: -220px;
+      right: -100px;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(40px,6vw,75px);
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 550px;
+      margin: 20px auto 30px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #81786c;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .webex-credit {
+      color: var(--gold2);
+      font-weight: 700;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 4%;
+        right: 4%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        background: rgba(10,8,6,.95);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 14px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero-art {
+        opacity: .22;
+        right: -180px;
+      }
+
+      .info-grid,
+      .menu-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .about-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 390px;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      section {
+        padding: 80px 0;
+      }
+
+      h1 {
+        font-size: 57px;
+        letter-spacing: -3px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-art {
+        width: 430px;
+        height: 430px;
+        right: -220px;
+      }
+
+      .plate {
+        width: 220px;
+        height: 220px;
+        left: 105px;
+        top: 105px;
+      }
+
+      .info-grid,
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 190px;
+      }
+
+      .gallery-item.big {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .location-card {
+        padding: 25px;
+      }
+
+      .map-card {
+        min-height: 330px;
+      }
+
+      .cta-box {
+        padding: 55px 22px;
+        border-radius: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOADER
+  ========================== -->
+
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">🍽️</div>
+      <div class="loader-text">CHEF HARRY CAFE</div>
+    </div>
+  </div>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <header id="header">
+    <nav>
+
+      <a href="#home" class="brand">
+        <div class="brand-icon">🍴</div>
+
+        <div>
+          <div class="brand-name">CHEF HARRY</div>
+          <span class="brand-sub">CAFE</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+        <li>
+          <a href="#location" class="nav-cta">Visit Us</a>
+        </li>
+      </ul>
+
+      <button class="menu-toggle" id="menuToggle">
+        ☰
+      </button>
+
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+
+      <div class="hero-glow"></div>
+
+      <div class="container">
+
+        <div class="hero-content reveal">
+
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            OPEN DAILY · 7:30 AM — 10:00 PM
+          </div>
+
+          <h1>
+            CHEF
+            <span>HARRY CAFE.</span>
+          </h1>
+
+          <p class="hero-text">
+            Good food, great vibes and a place worth coming back to.
+            Discover Chef Harry Cafe in Tunwala, Nehrugram, Dehradun.
+          </p>
+
+          <div class="hero-actions">
+
+            <a href="#menu" class="btn btn-primary">
+              🍽️ Explore Menu
+            </a>
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Chef+Harry+Cafe+Tunwala+Dehradun"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-secondary"
+            >
+              📍 Get Directions
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 3D ART -->
+
+      <div class="hero-art">
+
+        <div class="orbit">
+          <div class="orbit-dot"></div>
+        </div>
+
+        <div class="orbit two">
+          <div class="orbit-dot"></div>
+        </div>
+
+        <div class="plate"></div>
+
+        <div class="floating-food food-1">
+          ☕
+        </div>
+
+        <div class="floating-food food-2">
+          🍔
+        </div>
+
+        <div class="floating-food food-3">
+          🍰
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK INFO
+    ========================== -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="info-grid">
+
+          <div class="info-card reveal">
+            <div class="info-icon">⭐</div>
+            <h3>5.0 Rated</h3>
+            <p>
+              Listed with a 5.0 rating from 5 reviews.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-icon">📍</div>
+            <h3>Tunwala, Dehradun</h3>
+            <p>
+              Located on Raipur Miyawala Canal Road,
+              Tunwala, Nehrugram.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <div class="info-icon">🕐</div>
+            <h3>Open Daily</h3>
+            <p>
+              Every day from 7:30 AM to 10:00 PM.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about">
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div class="about-visual reveal">
+
+            <div class="about-badge">
+              ✦ CAFE EXPERIENCE
+            </div>
+
+            <div class="about-plate"></div>
+
+          </div>
+
+
+          <div class="about-copy reveal">
+
+            <div class="section-tag">
+              About The Cafe
+            </div>
+
+            <div class="section-heading">
+              <h2>
+                A place for
+                good moments.
+              </h2>
+            </div>
+
+            <p>
+              Chef Harry Cafe is a local food destination in
+              Tunwala, Nehrugram, Dehradun.
+            </p>
+
+            <p>
+              This website is designed as a premium digital
+              concept to help customers discover the cafe,
+              explore its offerings and easily find the location.
+            </p>
+
+            <ul class="about-list">
+
+              <li>
+                <span class="check">✓</span>
+                Convenient local location
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Daily opening hours
+              </li>
+
+              <li>
+                <span class="check">✓</span>
+                Food-focused cafe experience
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <section id="menu">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="section-tag">
+            Explore
+          </div>
+
+          <h2>
+            Something for
+            every craving.
+          </h2>
+
+          <p>
+            The actual menu and prices can be added here
+            once the cafe provides the official menu.
+          </p>
+
+        </div>
+
+
+        <div class="menu-tabs reveal">
+
+          <button class="menu-tab active">
+            All
+          </button>
+
+          <button class="menu-tab">
+            Coffee
+          </button>
+
+          <button class="menu-tab">
+            Fast Food
+          </button>
+
+          <button class="menu-tab">
+            Snacks
+          </button>
+
+          <button class="menu-tab">
+            Desserts
+          </button>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              ☕
+            </div>
+
+            <h3>Coffee & Beverages</h3>
+
+            <p>
+              Your favourite hot and cold beverages can be
+              showcased here.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              🍔
+            </div>
+
+            <h3>Fast Food</h3>
+
+            <p>
+              A dedicated section for the cafe's fast food
+              selection.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              🍟
+            </div>
+
+            <h3>Snacks</h3>
+
+            <p>
+              Showcase snacks and quick bites in an easy-to-browse
+              digital menu.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              🍕
+            </div>
+
+            <h3>Specials</h3>
+
+            <p>
+              Featured dishes and cafe specials can appear here.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              🍰
+            </div>
+
+            <h3>Desserts</h3>
+
+            <p>
+              Sweet treats and desserts can be displayed with
+              photos and prices.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+
+          <article class="menu-card reveal">
+
+            <div class="menu-emoji">
+              ✨
+            </div>
+
+            <h3>Chef's Specials</h3>
+
+            <p>
+              Signature dishes can be highlighted here after
+              official menu information is provided.
+            </p>
+
+            <span class="demo-label">
+              Menu details coming soon
+            </span>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY
+    ========================== -->
+
+    <section id="gallery">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="section-tag">
+            Gallery
+          </div>
+
+          <h2>
+            Your cafe,
+            your vibe.
+          </h2>
+
+          <p>
+            Real cafe and food photography can be added here
+            when official images are available.
+          </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item big reveal">
+
+            <div class="gallery-content">
+              <span>01 · Cafe</span>
+              <h3>Ambience</h3>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="gallery-content">
+              <span>02 · Food</span>
+              <h3>Signature Dishes</h3>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="gallery-content">
+              <span>03 · Drinks</span>
+              <h3>Coffee & More</h3>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="gallery-content">
+              <span>04 · Experience</span>
+              <h3>Good Vibes</h3>
+            </div>
+
+          </div>
+
+
+          <div class="gallery-item reveal">
+
+            <div class="gallery-content">
+              <span>05 · Moments</span>
+              <h3>Come & Enjoy</h3>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOCATION
+    ========================== -->
+
+    <section id="location">
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <div class="section-tag">
+            Find Us
+          </div>
+
+          <h2>
+            Come visit
+            Chef Harry.
+          </h2>
+
+        </div>
+
+
+        <div class="location-grid">
+
+          <div class="location-card reveal">
+
+            <h3>Chef Harry Cafe</h3>
+
+            <p class="address">
+              73CV+WX2, Raipur Miyawala Canal Road,
+              Tunwala, Nehrugram, Chaktonwala Grant,
+              Uttarakhand 248008, India
+            </p>
+
+
+            <div class="location-details">
+
+              <div class="location-row">
+
+                <div class="location-row-icon">
+                  📍
+                </div>
+
+                <div>
+                  <strong>Location</strong>
+                  <span>
+                    Tunwala, Nehrugram, Dehradun
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="location-row">
+
+                <div class="location-row-icon">
+                  🕐
+                </div>
+
+                <div>
+                  <strong>Opening Hours</strong>
+                  <span>
+                    Every day · 7:30 AM – 10:00 PM
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="location-row">
+
+                <div class="location-row-icon">
+                  ⭐
+                </div>
+
+                <div>
+                  <strong>Listed Rating</strong>
+                  <span>
+                    5.0 / 5 · 5 reviews
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=73CV%2BWX2%2C%20Raipur%20Miyawala%20Canal%20Road%2C%20Tunwala%2C%20Nehrugram%2C%20Uttarakhand"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary"
+            >
+              📍 Open Directions
+            </a>
+
+          </div>
+
+
+          <div class="map-card reveal">
+
+            <div class="map-road"></div>
+            <div class="map-road two"></div>
+
+            <div class="map-pin">
+              📍
+            </div>
+
+            <div class="map-label">
+              Chef Harry Cafe · Tunwala
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section class="cta">
+
+      <div class="container">
+
+        <div class="cta-box reveal">
+
+          <h2>
+            Hungry?
+            <br>
+            <span style="color:var(--gold2);">
+              Come Visit Us.
+            </span>
+          </h2>
+
+          <p>
+            Discover Chef Harry Cafe in Tunwala,
+            Nehrugram, Dehradun.
+          </p>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Chef+Harry+Cafe+Tunwala+Dehradun"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            📍 Get Directions
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="footer-copy">
+
+          <strong style="color:#eee;">
+            CHEF HARRY CAFE
+          </strong>
+
+          <br>
+
+          Tunwala, Nehrugram, Dehradun
+
+          <br><br>
+
+          © 2026 Chef Harry Cafe. All rights reserved.
+
+        </div>
+
+
+        <div class="footer-copy">
+
+          Website Concept & Development
+
+          <br>
+
+          <span class="webex-credit">
+            WEBEX
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* Loader */
+
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+
+        document
+          .getElementById("loader")
+          .classList.add("hide");
+
+      }, 700);
+
+    });
+
+
+    /* Navbar */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* Mobile Menu */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+
+      navLinks.classList.toggle("open");
+
+      menuToggle.textContent =
+        navLinks.classList.contains("open")
+          ? "✕"
+          : "☰";
+
+    });
+
+
+    /* Close mobile menu */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
+
+      });
+
+    });
+
+
+    /* Scroll Reveal */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
+
+
+    /* Menu tab visual interaction */
+
+    const menuTabs =
+      document.querySelectorAll(".menu-tab");
+
+    menuTabs.forEach(tab => {
+
+      tab.addEventListener("click", () => {
+
+        menuTabs.forEach(item => {
+
+          item.classList.remove("active");
+
+        });
+
+        tab.classList.add("active");
+
+      });
+
+    });
+
+
+    /* 3D card tilt */
+
+    const cards =
+      document.querySelectorAll(
+        ".info-card, .menu-card, .gallery-item"
+      );
+
+    cards.forEach(card => {
+
+      card.addEventListener("mousemove", event => {
+
+        if (window.innerWidth < 800) return;
+
+        const rect =
+          card.getBoundingClientRect();
+
+        const x =
+          event.clientX - rect.left;
+
+        const y =
+          event.clientY - rect.top;
+
+        const rotateX =
+          ((y / rect.height) - 0.5) * -5;
+
+        const rotateY =
+          ((x / rect.width) - 0.5) * 5;
+
+        card.style.transform =
+          `perspective(800px)
+           rotateX(${rotateX}deg)
+           rotateY(${rotateY}deg)
+           translateY(-5px)`;
+
+      });
+
+
+      card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+      });
+
+    });
+
+
+    /* Mouse movement for hero */
+
+    const heroArt =
+      document.querySelector(".hero-art");
+
+    window.addEventListener("mousemove", event => {
+
+      if (!heroArt || window.innerWidth < 900) return;
+
+      const x =
+        (event.clientX / window.innerWidth - .5) * 12;
+
+      const y =
+        (event.clientY / window.innerHeight - .5) * 12;
+
+      heroArt.style.transform =
+        `translateY(-50%)
+         translate(${x}px, ${y}px)`;
+
+    });
+
+  </script>
+
+</body>
+</html>
